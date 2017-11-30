@@ -3,10 +3,14 @@ import datetime
 
 
 def handler(event, context):
-    data = {
-        'output': 'Hello World',
-        'timestamp': datetime.datetime.utcnow().isoformat()
+    current_time = datetime.datetime.now() + timedelta(hours=9)
+    body = {
+        "message": "The time in Korea is " + str(current_time)
     }
-    return {'statusCode': 200,
-            'body': json.dumps(data),
-            'headers': {'Content-Type': 'application/json'}}
+
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(body)
+    }
+
+    return response
